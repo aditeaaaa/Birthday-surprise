@@ -3,9 +3,11 @@
 // ==========================
 
 
+// Loading Screen
+
 window.onload = function () {
 
-    setTimeout(() => {
+    setTimeout(function () {
 
         document.getElementById("loading").classList.add("hidden");
 
@@ -41,7 +43,7 @@ document.getElementById("sunflowerNext").onclick = function () {
 
 
 
-// Lily → Dog
+// Lily → Golden Retriever
 
 document.getElementById("lilyNext").onclick = function () {
 
@@ -53,7 +55,7 @@ document.getElementById("lilyNext").onclick = function () {
 
 
 
-// Dog → Envelope
+// Golden Retriever → Secret Message
 
 document.getElementById("dogNext").onclick = function () {
 
@@ -65,13 +67,12 @@ document.getElementById("dogNext").onclick = function () {
 
 
 
-// Envelope → Countdown
+// Secret Message → Countdown
 
 document.getElementById("openEnvelope").onclick = function () {
 
     document.getElementById("envelopePage").classList.add("hidden");
 
     document.getElementById("countdownPage").classList.remove("hidden");
-
 
 };
