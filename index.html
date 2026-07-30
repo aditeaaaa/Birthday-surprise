@@ -1,16 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Happy Birthday ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Surprise 💜</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+
+    background:linear-gradient(-45deg,#6a11cb,#8e44ad,#ff6ec7,#ff9ad5);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.card{
+    width:90%;
+    max-width:650px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 0 30px rgba(255,255,255,.2);
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+p{
+    font-size:1.2rem;
+    margin-bottom:30px;
+}
+
+#countdown{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.box{
+    background:rgba(255,255,255,.15);
+    border-radius:15px;
+    padding:18px;
+    min-width:90px;
+}
+
+.number{
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.label{
+    font-size:.9rem;
+    opacity:.8;
+}
+
+.footer{
+    margin-top:30px;
+    font-size:1rem;
+    opacity:.9;
+}
+</style>
 </head>
 
-<body style="background:#FFF8E7; text-align:center; font-family:Arial; padding-top:120px;">
+<body>
 
-<h1>🌻 Happy Birthday 🌻</h1>
+<div class="card">
 
-<h2>Welcome to your little surprise...</h2>
+<h1>💜 A Little Surprise 💜</h1>
 
-<p>This is only the beginning ❤️</p>
+<p>Every second brings us a little closer to your special day.</p>
+
+<div id="countdown">
+
+<div class="box">
+<div id="days" class="number">00</div>
+<div class="label">Days</div>
+</div>
+
+<div class="box">
+<div id="hours" class="number">00</div>
+<div class="label">Hours</div>
+</div>
+
+<div class="box">
+<div id="minutes" class="number">00</div>
+<div class="label">Minutes</div>
+</div>
+
+<div class="box">
+<div id="seconds" class="number">00</div>
+<div class="label">Seconds</div>
+</div>
+
+</div>
+
+<div class="footer">
+✨ August 10, 2026 ✨
+</div>
+
+</div>
+
+<script>
+
+const target = new Date("August 10, 2026 00:00:00").getTime();
+
+function timer(){
+
+const now = new Date().getTime();
+
+const distance = target-now;
+
+const d=Math.floor(distance/(1000*60*60*24));
+const h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const m=Math.floor((distance%(1000*60*60))/(1000*60));
+const s=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").innerHTML=d;
+document.getElementById("hours").innerHTML=h;
+document.getElementById("minutes").innerHTML=m;
+document.getElementById("seconds").innerHTML=s;
+
+}
+
+timer();
+setInterval(timer,1000);
+
+</script>
 
 </body>
 </html>
