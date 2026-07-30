@@ -137,13 +137,15 @@ document.getElementById("openEnvelope").onclick = function () {
     document.getElementById("countdownPage").classList.remove("hidden");
 
 
-    setTimeout(function(){
+    setTimeout(function () {
 
-        createConfetti();
+        if (window.createConfetti) {
+            window.createConfetti();
+        }
 
-        createFireworks();
-
-        setInterval(createFireworks, 2500);
+        if (window.createFireworks) {
+            window.createFireworks();
+        }
 
     }, 500);
 
