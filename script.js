@@ -3,76 +3,158 @@
 // ==========================
 
 
-// Loading → Welcome
+let stage = 1;
+
+
 
 window.onload = function () {
 
     setTimeout(() => {
 
-        document.getElementById("loading").classList.add("hidden");
+        loading.classList.add("hidden");
 
-        document.getElementById("welcome").classList.remove("hidden");
+        welcome.classList.remove("hidden");
 
-    }, 2500);
-
-};
-
-
-
-// Welcome → Sunflower
-
-document.getElementById("continueBtn").onclick = function () {
-
-    document.getElementById("welcome").classList.add("hidden");
-
-    document.getElementById("sunflowerPage").classList.remove("hidden");
+    },2500);
 
 };
 
 
 
-// Sunflower → Lily
+// Welcome → Choice
 
-document.getElementById("sunflowerNext").onclick = function () {
+continueBtn.onclick = function(){
 
-    document.getElementById("sunflowerPage").classList.add("hidden");
+    welcome.classList.add("hidden");
 
-    document.getElementById("lilyPage").classList.remove("hidden");
-
-};
-
-
-
-// Lily → Golden Retriever
-
-document.getElementById("lilyNext").onclick = function () {
-
-    document.getElementById("lilyPage").classList.add("hidden");
-
-    document.getElementById("dogPage").classList.remove("hidden");
+    choice.classList.remove("hidden");
 
 };
 
 
 
-// Golden Retriever → Envelope
 
-document.getElementById("dogNext").onclick = function () {
+// Sunflower card
 
-    document.getElementById("dogPage").classList.add("hidden");
+sunflower.onclick=function(){
 
-    document.getElementById("envelopePage").classList.remove("hidden");
+    choice.classList.add("hidden");
+
+    sunflowerPage.classList.remove("hidden");
+
+};
+
+
+
+// Sunflower Continue → Choice again
+
+sunflowerNext.onclick=function(){
+
+    sunflowerPage.classList.add("hidden");
+
+    stage=2;
+
+    updateChoice();
+
+    choice.classList.remove("hidden");
 
 };
 
 
 
-// Envelope → Countdown
 
-document.getElementById("openEnvelope").onclick = function () {
+// Lily card
 
-    document.getElementById("envelopePage").classList.add("hidden");
+lily.onclick=function(){
 
-    document.getElementById("countdownPage").classList.remove("hidden");
+    choice.classList.add("hidden");
+
+    lilyPage.classList.remove("hidden");
 
 };
+
+
+
+// Lily Continue
+
+lilyNext.onclick=function(){
+
+    lilyPage.classList.add("hidden");
+
+    stage=3;
+
+    updateChoice();
+
+    choice.classList.remove("hidden");
+
+};
+
+
+
+
+// Dog card
+
+dog.onclick=function(){
+
+    choice.classList.add("hidden");
+
+    dogPage.classList.remove("hidden");
+
+};
+
+
+
+
+// Dog Continue
+
+dogNext.onclick=function(){
+
+    dogPage.classList.add("hidden");
+
+    envelopePage.classList.remove("hidden");
+
+};
+
+
+
+
+// Envelope
+
+openEnvelope.onclick=function(){
+
+    envelopePage.classList.add("hidden");
+
+    countdownPage.classList.remove("hidden");
+
+};
+
+
+
+
+// Control cards
+
+function updateChoice(){
+
+
+    if(stage===2){
+
+        sunflower.style.display="none";
+
+        lily.style.display="block";
+
+        dog.style.display="block";
+
+    }
+
+
+
+    if(stage===3){
+
+        lily.style.display="none";
+
+        dog.style.display="block";
+
+    }
+
+
+}
