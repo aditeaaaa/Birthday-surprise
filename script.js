@@ -1,114 +1,77 @@
-// =============================
+// ==========================
 // Birthday Surprise Script
-// =============================
+// ==========================
 
-// Wait for the page to load
 window.onload = function () {
 
-    const loading = document.getElementById("loading");
-    const welcome = document.getElementById("welcome");
-    const choice = document.getElementById("choice");
-
-    // Hide loading after 2.5 seconds
+    // Loading Screen
     setTimeout(() => {
-        loading.classList.add("hidden");
-        welcome.classList.remove("hidden");
+        document.getElementById("loading").classList.add("hidden");
+        document.getElementById("welcome").classList.remove("hidden");
     }, 2500);
-
-    // Continue button
-    document.getElementById("continueBtn").addEventListener("click", () => {
-
-        welcome.classList.add("hidden");
-
-        setTimeout(() => {
-            choice.classList.remove("hidden");
-        }, 300);
-
-    });
-
-    // Companion selection
-    document.getElementById("sunflower").addEventListener("click", () => {
-        showMessage("sunflower");
-    });
-
-    document.getElementById("lily").addEventListener("click", () => {
-        showMessage("lily");
-    });
-
-    document.getElementById("dog").addEventListener("click", () => {
-        showMessage("dog");
-    });
 
 };
 
-// =====================================
-// Temporary story function
-// =====================================
+// Welcome → Choice
+document.getElementById("continueBtn").onclick = function () {
 
-function showMessage(choice){
+    document.getElementById("welcome").classList.add("hidden");
+    document.getElementById("choice").classList.remove("hidden");
 
-    let title="";
-    let message="";
+};
 
-    switch(choice){
+// Choice → Sunflower
+document.getElementById("sunflower").onclick = function () {
 
-        case "sunflower":
+    document.getElementById("choice").classList.add("hidden");
+    document.getElementById("sunflowerPage").classList.remove("hidden");
 
-            title="🌻 Sunflower";
+};
 
-            message=`Sunflowers never stop looking for light.
+// Choice → Lily
+document.getElementById("lily").onclick = function () {
 
-Even on cloudy days...
+    document.getElementById("choice").classList.add("hidden");
+    document.getElementById("lilyPage").classList.remove("hidden");
 
-they quietly wait for the sun.
+};
 
-Maybe that's what hope looks like.
+// Choice → Dog
+document.getElementById("dog").onclick = function () {
 
-Keep following the light.
+    document.getElementById("choice").classList.add("hidden");
+    document.getElementById("dogPage").classList.remove("hidden");
 
-Your journey continues soon.`;
+};
 
-            break;
+// Sunflower → Envelope
+document.getElementById("sunflowerNext").onclick = function () {
 
-        case "lily":
+    document.getElementById("sunflowerPage").classList.add("hidden");
+    document.getElementById("envelopePage").classList.remove("hidden");
 
-            title="🤍 Lily";
+};
 
-            message=`Lilies never try to outshine other flowers.
+// Lily → Envelope
+document.getElementById("lilyNext").onclick = function () {
 
-Their beauty is gentle.
+    document.getElementById("lilyPage").classList.add("hidden");
+    document.getElementById("envelopePage").classList.remove("hidden");
 
-Calm.
+};
 
-Peaceful.
+// Dog → Envelope
+document.getElementById("dogNext").onclick = function () {
 
-Sometimes the quietest hearts leave the deepest memories.`;
+    document.getElementById("dogPage").classList.add("hidden");
+    document.getElementById("envelopePage").classList.remove("hidden");
 
-            break;
+};
 
-        case "dog":
+// Envelope → Countdown
+document.getElementById("openEnvelope").onclick = function () {
 
-            title="🐶 Golden Retriever";
+    document.getElementById("envelopePage").classList.add("hidden");
+    document.getElementById("countdownPage").classList.remove("hidden");
 
-            message=`If happiness had a face,
-
-it would probably smile like this.
-
-Loyal.
-
-Warm.
-
-Always happy to see you.
-
-Some souls simply make the world softer.`;
-
-            break;
-
-    }
-
-    // This is temporary.
-    // Later we'll replace it with animated story pages.
-
-    alert(title + "\n\n" + message);
-
-}
+};
