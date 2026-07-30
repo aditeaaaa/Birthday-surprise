@@ -1,42 +1,87 @@
+// ==========================
+// Countdown Timer
+// ==========================
+
+
+// Set your target date here
+
 const targetDate = new Date("August 10, 2026 00:00:00").getTime();
 
-function updateCountdown() {
+
+
+function updateCountdown(){
+
 
     const now = new Date().getTime();
+
+
     const distance = targetDate - now;
 
-    if (distance < 0) {
+
+
+    if(distance < 0){
+
         return;
+
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+
+    const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+    );
+
 
     const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
+        (distance % (1000 * 60 * 60 * 24))
+        /
         (1000 * 60 * 60)
     );
 
+
     const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
+        (distance % (1000 * 60 * 60))
+        /
         (1000 * 60)
     );
 
+
     const seconds = Math.floor(
-        (distance % (1000 * 60)) / 1000
+        (distance % (1000 * 60))
+        /
+        1000
     );
 
-    document.getElementById("days").textContent = days;
-    document.getElementById("hours").textContent = hours;
-    document.getElementById("minutes").textContent = minutes;
-    document.getElementById("seconds").textContent = seconds;
+
+
+    document.getElementById("days").innerHTML = days;
+
+    document.getElementById("hours").innerHTML = hours;
+
+    document.getElementById("minutes").innerHTML = minutes;
+
+    document.getElementById("seconds").innerHTML = seconds;
+
 
 }
 
-setInterval(updateCountdown, 1000);
+
+
+setInterval(updateCountdown,1000);
+
 updateCountdown();
-// 🎉 Birthday Celebration Effects
+
+
+
+
+
+// ==========================
+// 🎉 Confetti
+// ==========================
+
 
 function createConfetti(){
+
 
     const colors = [
         "#ff4081",
@@ -47,94 +92,112 @@ function createConfetti(){
     ];
 
 
-    for(let i = 0; i < 120; i++){
 
-        let piece = document.createElement("div");
+    for(let i=0;i<120;i++){
 
-        piece.className = "confetti";
 
-        piece.style.left = Math.random() * 100 + "vw";
+        let piece=document.createElement("div");
+
+
+        piece.className="confetti";
+
+
+        piece.style.left =
+        Math.random()*100+"vw";
+
 
         piece.style.background =
-        colors[Math.floor(Math.random() * colors.length)];
+        colors[
+        Math.floor(Math.random()*colors.length)
+        ];
+
 
 
         piece.style.animationDuration =
-        (Math.random() * 3 + 2) + "s";
+        (Math.random()*3+2)+"s";
 
-
-        piece.style.transform =
-        `rotate(${Math.random() * 360}deg)`;
 
 
         document.body.appendChild(piece);
 
 
-        setTimeout(() => {
+
+        setTimeout(()=>{
 
             piece.remove();
 
-        }, 5000);
+        },5000);
+
 
     }
+
 
 }
 
 
 
+
+
+
+// ==========================
+// 🎆 Fireworks
+// ==========================
+
+
 function createFireworks(){
 
-    for(let i = 0; i < 8; i++){
 
-        let fire = document.createElement("div");
+    for(let i=0;i<8;i++){
 
-        fire.className = "firework";
+
+        let fire=document.createElement("div");
+
+
+        fire.className="firework";
 
 
         fire.style.left =
-        (20 + Math.random() * 60) + "vw";
+        (20+Math.random()*60)+"vw";
 
 
         fire.style.top =
-        (20 + Math.random() * 40) + "vh";
+        (20+Math.random()*40)+"vh";
+
 
 
         fire.style.setProperty(
             "--x",
-            (Math.random() * 300 - 150) + "px"
+            (Math.random()*300-150)+"px"
         );
 
 
         fire.style.setProperty(
             "--y",
-            (Math.random() * 300 - 150) + "px"
+            (Math.random()*300-150)+"px"
         );
+
 
 
         document.body.appendChild(fire);
 
 
-        setTimeout(() => {
+
+        setTimeout(()=>{
 
             fire.remove();
 
         },1500);
 
+
     }
+
 
 }
 
 
-// Start effects only on countdown page
 
-// Wait for countdown page to appear
+// Make functions available to script.js
 
-setTimeout(() => {
+window.createConfetti = createConfetti;
 
-    createConfetti();
-
-    createFireworks();
-
-    setInterval(createFireworks,2500);
-
-},800);
+window.createFireworks = createFireworks;
