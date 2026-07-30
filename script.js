@@ -7,7 +7,7 @@
 
 window.onload = function () {
 
-    setTimeout(() => {
+    setTimeout(function () {
 
         document.getElementById("loading").classList.add("hidden");
 
@@ -16,6 +16,7 @@ window.onload = function () {
     }, 2500);
 
 };
+
 
 
 
@@ -32,7 +33,8 @@ document.getElementById("continueBtn").onclick = function () {
 
 
 
-// 🌻 Sunflower Selection
+
+// 🌻 Sunflower Card
 
 document.getElementById("sunflower").onclick = function () {
 
@@ -44,28 +46,28 @@ document.getElementById("sunflower").onclick = function () {
 
 
 
-// Sunflower → Choice (Only Lily + Dog)
+
+// 🌻 Sunflower Continue → Lily + Dog Cards
 
 document.getElementById("sunflowerNext").onclick = function () {
+
 
     document.getElementById("sunflowerPage").classList.add("hidden");
 
 
     document.getElementById("sunflower").style.display = "none";
 
-    document.getElementById("lily").style.display = "block";
-
-    document.getElementById("dog").style.display = "block";
-
 
     document.getElementById("choice").classList.remove("hidden");
+
 
 };
 
 
 
 
-// 🤍 Lily Selection
+
+// 🤍 Lily Card
 
 document.getElementById("lily").onclick = function () {
 
@@ -77,19 +79,20 @@ document.getElementById("lily").onclick = function () {
 
 
 
-// Lily → Choice (Only Dog)
+
+// 🤍 Lily Continue → Only Dog Card
 
 document.getElementById("lilyNext").onclick = function () {
+
 
     document.getElementById("lilyPage").classList.add("hidden");
 
 
     document.getElementById("lily").style.display = "none";
 
-    document.getElementById("dog").style.display = "block";
-
 
     document.getElementById("choice").classList.remove("hidden");
+
 
 };
 
@@ -97,7 +100,7 @@ document.getElementById("lilyNext").onclick = function () {
 
 
 
-// 🐶 Dog Selection
+// 🐶 Dog Card
 
 document.getElementById("dog").onclick = function () {
 
@@ -110,7 +113,8 @@ document.getElementById("dog").onclick = function () {
 
 
 
-// Dog → Envelope
+
+// 🐶 Dog Continue → Envelope
 
 document.getElementById("dogNext").onclick = function () {
 
@@ -123,28 +127,38 @@ document.getElementById("dogNext").onclick = function () {
 
 
 
-// Envelope → Countdown
+
+// 💌 Envelope → Countdown
 
 document.getElementById("openEnvelope").onclick = function () {
 
-    document.getElementById("envelopePage").classList.add("hidden");
 
-    document.getElementById("countdownPage").classList.remove("hidden");
-
-
-    // Celebration
-
-    if (typeof createConfetti === "function") {
-
-        createConfetti();
-
-    }
+    document.getElementById("envelopePage").style.display = "none";
 
 
-    if (typeof createFireworks === "function") {
+    document.getElementById("countdownPage").style.display = "flex";
 
-        createFireworks();
 
-    }
+
+    setTimeout(function(){
+
+
+        if(typeof createConfetti === "function"){
+
+            createConfetti();
+
+        }
+
+
+        if(typeof createFireworks === "function"){
+
+            createFireworks();
+
+        }
+
+
+    },300);
+
+
 
 };
