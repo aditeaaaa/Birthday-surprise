@@ -127,16 +127,14 @@ function createFireworks(){
 
 // Start effects only on countdown page
 
-document.getElementById("openEnvelope").onclick = function(){
+// Wait for countdown page to appear
 
-    setTimeout(() => {
+setTimeout(() => {
 
-        createConfetti();
+    createConfetti();
 
-        createFireworks();
+    createFireworks();
 
-        setInterval(createFireworks,2500);
+    setInterval(createFireworks,2500);
 
-    },500);
-
-};
+},800);
