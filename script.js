@@ -132,33 +132,19 @@ document.getElementById("dogNext").onclick = function () {
 
 document.getElementById("openEnvelope").onclick = function () {
 
+    document.getElementById("envelopePage").classList.add("hidden");
 
-    document.getElementById("envelopePage").style.display = "none";
-
-
-    document.getElementById("countdownPage").style.display = "flex";
-
+    document.getElementById("countdownPage").classList.remove("hidden");
 
 
     setTimeout(function(){
 
+        createConfetti();
 
-        if(typeof createConfetti === "function"){
+        createFireworks();
 
-            createConfetti();
+        setInterval(createFireworks, 2500);
 
-        }
-
-
-        if(typeof createFireworks === "function"){
-
-            createFireworks();
-
-        }
-
-
-    },300);
-
-
+    }, 500);
 
 };
