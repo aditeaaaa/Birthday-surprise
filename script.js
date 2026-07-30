@@ -3,158 +3,148 @@
 // ==========================
 
 
-let stage = 1;
-
-
+// Loading Screen
 
 window.onload = function () {
 
     setTimeout(() => {
 
-        loading.classList.add("hidden");
+        document.getElementById("loading").classList.add("hidden");
 
-        welcome.classList.remove("hidden");
+        document.getElementById("welcome").classList.remove("hidden");
 
-    },2500);
-
-};
-
-
-
-// Welcome → Choice
-
-continueBtn.onclick = function(){
-
-    welcome.classList.add("hidden");
-
-    choice.classList.remove("hidden");
+    }, 2500);
 
 };
 
 
 
+// Welcome → Choice Page
 
-// Sunflower card
+document.getElementById("continueBtn").onclick = function () {
 
-sunflower.onclick=function(){
+    document.getElementById("welcome").classList.add("hidden");
 
-    choice.classList.add("hidden");
-
-    sunflowerPage.classList.remove("hidden");
-
-};
-
-
-
-// Sunflower Continue → Choice again
-
-sunflowerNext.onclick=function(){
-
-    sunflowerPage.classList.add("hidden");
-
-    stage=2;
-
-    updateChoice();
-
-    choice.classList.remove("hidden");
+    document.getElementById("choice").classList.remove("hidden");
 
 };
 
 
 
 
-// Lily card
+// 🌻 Sunflower Selection
 
-lily.onclick=function(){
+document.getElementById("sunflower").onclick = function () {
 
-    choice.classList.add("hidden");
+    document.getElementById("choice").classList.add("hidden");
 
-    lilyPage.classList.remove("hidden");
-
-};
-
-
-
-// Lily Continue
-
-lilyNext.onclick=function(){
-
-    lilyPage.classList.add("hidden");
-
-    stage=3;
-
-    updateChoice();
-
-    choice.classList.remove("hidden");
+    document.getElementById("sunflowerPage").classList.remove("hidden");
 
 };
 
 
 
+// Sunflower → Choice (Only Lily + Dog)
 
-// Dog card
+document.getElementById("sunflowerNext").onclick = function () {
 
-dog.onclick=function(){
+    document.getElementById("sunflowerPage").classList.add("hidden");
 
-    choice.classList.add("hidden");
 
-    dogPage.classList.remove("hidden");
+    document.getElementById("sunflower").style.display = "none";
+
+    document.getElementById("lily").style.display = "block";
+
+    document.getElementById("dog").style.display = "block";
+
+
+    document.getElementById("choice").classList.remove("hidden");
 
 };
 
 
 
 
-// Dog Continue
+// 🤍 Lily Selection
 
-dogNext.onclick=function(){
+document.getElementById("lily").onclick = function () {
 
-    dogPage.classList.add("hidden");
+    document.getElementById("choice").classList.add("hidden");
 
-    envelopePage.classList.remove("hidden");
+    document.getElementById("lilyPage").classList.remove("hidden");
+
+};
+
+
+
+// Lily → Choice (Only Dog)
+
+document.getElementById("lilyNext").onclick = function () {
+
+    document.getElementById("lilyPage").classList.add("hidden");
+
+
+    document.getElementById("lily").style.display = "none";
+
+    document.getElementById("dog").style.display = "block";
+
+
+    document.getElementById("choice").classList.remove("hidden");
 
 };
 
 
 
 
-// Envelope
 
-openEnvelope.onclick=function(){
+// 🐶 Dog Selection
 
-    envelopePage.classList.add("hidden");
+document.getElementById("dog").onclick = function () {
 
-    countdownPage.classList.remove("hidden");
+    document.getElementById("choice").classList.add("hidden");
+
+    document.getElementById("dogPage").classList.remove("hidden");
 
 };
 
 
 
 
-// Control cards
+// Dog → Envelope
 
-function updateChoice(){
+document.getElementById("dogNext").onclick = function () {
+
+    document.getElementById("dogPage").classList.add("hidden");
+
+    document.getElementById("envelopePage").classList.remove("hidden");
+
+};
 
 
-    if(stage===2){
 
-        sunflower.style.display="none";
 
-        lily.style.display="block";
+// Envelope → Countdown
 
-        dog.style.display="block";
+document.getElementById("openEnvelope").onclick = function () {
+
+    document.getElementById("envelopePage").classList.add("hidden");
+
+    document.getElementById("countdownPage").classList.remove("hidden");
+
+
+    // Celebration
+
+    if (typeof createConfetti === "function") {
+
+        createConfetti();
 
     }
 
 
+    if (typeof createFireworks === "function") {
 
-    if(stage===3){
-
-        lily.style.display="none";
-
-        dog.style.display="block";
+        createFireworks();
 
     }
 
-
-}
+};
