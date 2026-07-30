@@ -140,11 +140,16 @@ document.getElementById("openEnvelope").onclick = function () {
     setTimeout(function () {
 
         if (window.createConfetti) {
+
             window.createConfetti();
+
         }
 
+
         if (window.createFireworks) {
+
             window.createFireworks();
+
         }
 
     }, 500);
