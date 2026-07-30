@@ -3,11 +3,11 @@
 // ==========================
 
 
-// Loading Screen
+// Loading → Welcome
 
 window.onload = function () {
 
-    setTimeout(function () {
+    setTimeout(() => {
 
         document.getElementById("loading").classList.add("hidden");
 
@@ -55,7 +55,7 @@ document.getElementById("lilyNext").onclick = function () {
 
 
 
-// Golden Retriever → Secret Message
+// Golden Retriever → Envelope
 
 document.getElementById("dogNext").onclick = function () {
 
@@ -67,7 +67,7 @@ document.getElementById("dogNext").onclick = function () {
 
 
 
-// Secret Message → Countdown
+// Envelope → Countdown
 
 document.getElementById("openEnvelope").onclick = function () {
 
